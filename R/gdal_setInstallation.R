@@ -538,7 +538,7 @@ gdal_setInstallation <- function(search_path=NULL,rescan=FALSE,
 	}
 	
 # Sets the installation for this session.
-	if(is.null(getOption("gdalUtils_gdalPath")))
+	if(is.null(getOption("gdalUtils_gdalPath")) || rescan)
 	{
 		rescan=TRUE	
 		gdal_installation_out <- gdal_installation(search_path=search_path,rescan=rescan,ignore.full_scan=ignore.full_scan,
