@@ -94,7 +94,6 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		python_util=FALSE)
 {
 	# path to executable check in here?
-	
 	gdal_setInstallation()
 	if(is.null(getOption("gdalUtils_gdalPath"))) return()
 	
@@ -281,6 +280,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 			parameter_variables_repeatable_strings <- sapply(parameter_variables_repeatable_defined,
 					function(X,parameter_values,parameter_doubledash)
 					{
+#						if(X == "gcp") browser()
+						
 						if(X %in% parameter_noflags)
 						{
 							flag=NULL
@@ -301,7 +302,7 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 									paste(flag,
 											(parameter_values[[which(names(parameter_values)==X)]]),
 											sep=""),
-									collapse=" ")
+									collapse=" ")			
 						} else
 						{	
 							parameter_variables_repeatable_string <- paste(
@@ -344,7 +345,6 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_variables_noflag_strings <- NULL	
 	}
 	
-#	browser()
 	
 	parameter_vector <- c(
 			parameter_variables_logical_strings,
