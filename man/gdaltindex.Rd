@@ -4,9 +4,21 @@
 \alias{gdaltindex}
 \title{gdaltindex}
 \usage{
-gdaltindex(index_file, gdal_file, f, tileindex, write_absolute_path,
-  skip_different_projection, t_srs, src_srs_name, src_srs_format, lyr_name,
-  output_Vector = FALSE, ignore.full_scan = TRUE, verbose = FALSE)
+gdaltindex(
+  index_file,
+  gdal_file,
+  f,
+  tileindex,
+  write_absolute_path,
+  skip_different_projection,
+  t_srs,
+  src_srs_name,
+  src_srs_format,
+  lyr_name,
+  output_Vector = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{index_file}{Character. The name of the output file to create/append to. The default shapefile will be created if it doesn't already exist, otherwise it will append to the existing file.}

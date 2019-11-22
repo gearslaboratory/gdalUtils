@@ -4,8 +4,16 @@
 \alias{align_rasters}
 \title{Aligns raster files}
 \usage{
-align_rasters(unaligned, reference, dstfile, output_Raster = FALSE,
-  nThreads = 1, projres_only = FALSE, verbose = FALSE, ...)
+align_rasters(
+  unaligned,
+  reference,
+  dstfile,
+  output_Raster = FALSE,
+  nThreads = 1,
+  projres_only = FALSE,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{unaligned}{Character.  The filename of a raster to be aligned to the reference raster.}

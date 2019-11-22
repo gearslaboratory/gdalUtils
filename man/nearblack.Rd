@@ -4,9 +4,23 @@
 \alias{nearblack}
 \title{nearblack}
 \usage{
-nearblack(infile, o, of, co, white, color, near, nb, setalpha, setmask, q,
-  output_Raster = FALSE, overwrite = FALSE, ignore.full_scan = TRUE,
-  verbose = FALSE)
+nearblack(
+  infile,
+  o,
+  of,
+  co,
+  white,
+  color,
+  near,
+  nb,
+  setalpha,
+  setmask,
+  q,
+  output_Raster = FALSE,
+  overwrite = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{infile}{Character. The input file. Any GDAL supported format, any number of bands, normally 8bit Byte bands.}

@@ -4,8 +4,23 @@
 \alias{gdaltransform}
 \title{gdaltransform}
 \usage{
-gdaltransform(srcfile, dstfile, coords, s_srs, t_srs, to, order, tps, rpc,
-  geoloc, i, gcp, output_xy, ignore.full_scan = TRUE, verbose = FALSE)
+gdaltransform(
+  srcfile,
+  dstfile,
+  coords,
+  s_srs,
+  t_srs,
+  to,
+  order,
+  tps,
+  rpc,
+  geoloc,
+  i,
+  gcp,
+  output_xy,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{srcfile}{Character. File with source projection definition or GCP's. If not given, source projection is read from the command-line -s_srs or -gcp parameters.}

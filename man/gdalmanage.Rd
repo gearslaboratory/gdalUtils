@@ -4,8 +4,16 @@
 \alias{gdalmanage}
 \title{gdalmanage}
 \usage{
-gdalmanage(mode, datasetname, newdatasetname, r, u, f,
-  ignore.full_scan = TRUE, verbose = FALSE)
+gdalmanage(
+  mode,
+  datasetname,
+  newdatasetname,
+  r,
+  u,
+  f,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{mode}{Character. Mode of operation. "identify" | "copy" | "rename" | "delete". See details.}

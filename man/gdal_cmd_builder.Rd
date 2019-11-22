@@ -4,11 +4,17 @@
 \alias{gdal_cmd_builder}
 \title{gdal_cmd_builder}
 \usage{
-gdal_cmd_builder(executable, parameter_variables = c(),
-  parameter_values = c(), parameter_order = c(),
-  parameter_noflags = c(), parameter_doubledash = c(),
-  parameter_noquotes = c(), gdal_installation_id = 1,
-  python_util = FALSE)
+gdal_cmd_builder(
+  executable,
+  parameter_variables = c(),
+  parameter_values = c(),
+  parameter_order = c(),
+  parameter_noflags = c(),
+  parameter_doubledash = c(),
+  parameter_noquotes = c(),
+  gdal_installation_id = 1,
+  python_util = FALSE
+)
 }
 \arguments{
 \item{executable}{Character. The GDAL command to use (e.g. "gdal_translate")}

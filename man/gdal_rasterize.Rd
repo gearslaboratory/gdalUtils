@@ -4,10 +4,35 @@
 \alias{gdal_rasterize}
 \title{gdal_rasterize}
 \usage{
-gdal_rasterize(src_datasource, dst_filename, b, i, at, burn, a, threeD,
-  add, l, where, sql, dialect, of, a_srs, co, a_nodata, init, te, tr, tap,
-  ts, ot, q, output_Raster = FALSE, ignore.full_scan = TRUE,
-  verbose = FALSE)
+gdal_rasterize(
+  src_datasource,
+  dst_filename,
+  b,
+  i,
+  at,
+  burn,
+  a,
+  threeD,
+  add,
+  l,
+  where,
+  sql,
+  dialect,
+  of,
+  a_srs,
+  co,
+  a_nodata,
+  init,
+  te,
+  tr,
+  tap,
+  ts,
+  ot,
+  q,
+  output_Raster = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{src_datasource}{Character. Any OGR supported readable datasource.}

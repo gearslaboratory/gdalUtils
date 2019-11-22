@@ -4,9 +4,20 @@
 \alias{ogrtindex}
 \title{ogrtindex}
 \usage{
-ogrtindex(output_dataset, src_dataset, lnum, lname, f, tileindex,
-  write_absolute_path, skip_different_projection, accept_different_schemas,
-  output_Vector = FALSE, ignore.full_scan = TRUE, verbose = FALSE)
+ogrtindex(
+  output_dataset,
+  src_dataset,
+  lnum,
+  lname,
+  f,
+  tileindex,
+  write_absolute_path,
+  skip_different_projection,
+  accept_different_schemas,
+  output_Vector = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{output_dataset}{Character. Output tile index.}

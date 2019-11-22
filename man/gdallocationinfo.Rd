@@ -4,9 +4,24 @@
 \alias{gdallocationinfo}
 \title{gdallocationinfo}
 \usage{
-gdallocationinfo(srcfile, x, y, coords, xml, lifonly, valonly, b, overview,
-  l_srs, geoloc, wgs84, oo, raw_output = TRUE, ignore.full_scan = TRUE,
-  verbose = FALSE)
+gdallocationinfo(
+  srcfile,
+  x,
+  y,
+  coords,
+  xml,
+  lifonly,
+  valonly,
+  b,
+  overview,
+  l_srs,
+  geoloc,
+  wgs84,
+  oo,
+  raw_output = TRUE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{srcfile}{Character. The source GDAL raster datasource name.}

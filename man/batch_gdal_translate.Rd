@@ -4,8 +4,15 @@
 \alias{batch_gdal_translate}
 \title{batch_gdal_translate}
 \usage{
-batch_gdal_translate(infiles, outdir, outsuffix = "_conv.tif",
-  pattern = NULL, recursive = FALSE, verbose = FALSE, ...)
+batch_gdal_translate(
+  infiles,
+  outdir,
+  outsuffix = "_conv.tif",
+  pattern = NULL,
+  recursive = FALSE,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{infiles}{Character. A directory or a character vector of files (including their path).  If a directory, all files matching the pattern will be converted.}

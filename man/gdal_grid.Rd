@@ -4,10 +4,34 @@
 \alias{gdal_grid}
 \title{gdal_grid}
 \usage{
-gdal_grid(src_datasource, dst_filename, ot, of, txe, tye, outsize, a_srs,
-  zfield, z_increase, z_multiply, a, spat, clipsrc, clipsrcsql,
-  clipsrclayer, clipsrcwhere, l, where, sql, co, q, config,
-  output_Raster = FALSE, ignore.full_scan = TRUE, verbose = FALSE)
+gdal_grid(
+  src_datasource,
+  dst_filename,
+  ot,
+  of,
+  txe,
+  tye,
+  outsize,
+  a_srs,
+  zfield,
+  z_increase,
+  z_multiply,
+  a,
+  spat,
+  clipsrc,
+  clipsrcsql,
+  clipsrclayer,
+  clipsrcwhere,
+  l,
+  where,
+  sql,
+  co,
+  q,
+  config,
+  output_Raster = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{src_datasource}{Character. Any OGR supported readable datasource.}

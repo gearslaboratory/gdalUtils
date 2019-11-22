@@ -124,8 +124,12 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 	}
 	
 	# GCP FIX, IDd by Stuart Allen 30 May 2016
+	# New fixes suggested by Barry Rowlingson, 22 November 2019
 	if(!missing(gcp))
 	{
+		if(is.data.frame(gcp))
+			parameter_values$gcp <- as.matrix(parameter_values$gcp)
+		
 		if(is.matrix(gcp))
 		{
 			parameter_values$gcp <- apply(X=gcp,FUN=function(x) return(paste(as.character(x),collapse=" ")),MARGIN=1)

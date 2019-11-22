@@ -4,8 +4,17 @@
 \alias{gdaladdo}
 \title{gdaladdo}
 \usage{
-gdaladdo(filename, levels, r, b, ro, clean, oo, ignore.full_scan = TRUE,
-  verbose = FALSE)
+gdaladdo(
+  filename,
+  levels,
+  r,
+  b,
+  ro,
+  clean,
+  oo,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{filename}{Character. The file to build overviews for (or whose overviews must be removed).}

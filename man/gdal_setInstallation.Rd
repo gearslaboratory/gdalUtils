@@ -4,8 +4,12 @@
 \alias{gdal_setInstallation}
 \title{gdal_setInstallation}
 \usage{
-gdal_setInstallation(search_path = NULL, rescan = FALSE,
-  ignore.full_scan = TRUE, verbose = FALSE)
+gdal_setInstallation(
+  search_path = NULL,
+  rescan = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{search_path}{Character. Force a search in a specified directory.  This directory should contain the gdalinfo(.exe) executable.  If a valid GDAL install is found in this path, this will force gdalUtils to use this installation.  Remember to set rescan=TRUE if you have already set an install.}

@@ -4,9 +4,26 @@
 \alias{gdal_contour}
 \title{gdal_contour}
 \usage{
-gdal_contour(src_filename, dst_filename, b, a, threeD, inodata, snodata, i,
-  f = "ESRI Shapefile", dsco, lco, off, fl, nln, output_Vector = FALSE,
-  config, ignore.full_scan = TRUE, verbose = FALSE)
+gdal_contour(
+  src_filename,
+  dst_filename,
+  b,
+  a,
+  threeD,
+  inodata,
+  snodata,
+  i,
+  f = "ESRI Shapefile",
+  dsco,
+  lco,
+  off,
+  fl,
+  nln,
+  output_Vector = FALSE,
+  config,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{src_filename}{Character. Any OGR supported readable datasource.}

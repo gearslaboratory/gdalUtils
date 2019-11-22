@@ -4,10 +4,32 @@
 \alias{gdaldem}
 \title{gdaldem}
 \usage{
-gdaldem(mode, input_dem, output, of, compute_edges, alg, b, co, q, z, s,
-  az, alt, combined, p, trigonometric, zero_for_flat, color_text_file,
-  alpha, exact_color_entry, nearest_color_entry, output_Raster = FALSE,
-  ignore.full_scan = TRUE, verbose = FALSE)
+gdaldem(
+  mode,
+  input_dem,
+  output,
+  of,
+  compute_edges,
+  alg,
+  b,
+  co,
+  q,
+  z,
+  s,
+  az,
+  alt,
+  combined,
+  p,
+  trigonometric,
+  zero_for_flat,
+  color_text_file,
+  alpha,
+  exact_color_entry,
+  nearest_color_entry,
+  output_Raster = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{mode}{Character. ("hillshade"|"slope"|"aspect"|"color-relief"|"TRI"|"TPI"|"roughness")}

@@ -4,8 +4,16 @@
 \alias{rgb2pct}
 \title{rgb2pct}
 \usage{
-rgb2pct(source_file, dest_file, n, pct, of, output_Raster = FALSE,
-  ignore.full_scan = TRUE, verbose = FALSE)
+rgb2pct(
+  source_file,
+  dest_file,
+  n,
+  pct,
+  of,
+  output_Raster = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{source_file}{Character. The input RGB file.}

@@ -4,9 +4,31 @@
 \alias{ogrinfo}
 \title{ogrinfo}
 \usage{
-ogrinfo(datasource_name, layer, ro, q, where, spat, geomfield, fid, sql,
-  dialect, al, so, fields, geom, oo, nomd, listmdd, mdd, nocount, noextent,
-  formats, ignore.full_scan = TRUE, verbose = FALSE)
+ogrinfo(
+  datasource_name,
+  layer,
+  ro,
+  q,
+  where,
+  spat,
+  geomfield,
+  fid,
+  sql,
+  dialect,
+  al,
+  so,
+  fields,
+  geom,
+  oo,
+  nomd,
+  listmdd,
+  mdd,
+  nocount,
+  noextent,
+  formats,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{datasource_name}{Character. The data source to open. May be a filename, directory or other virtual name. See the OGR Vector Formats list for supported datasources.}

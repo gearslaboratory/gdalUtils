@@ -4,8 +4,15 @@
 \alias{gdalsrsinfo}
 \title{gdalsrsinfo}
 \usage{
-gdalsrsinfo(srs_def, p, V, o, as.CRS = FALSE, ignore.full_scan = TRUE,
-  verbose = FALSE)
+gdalsrsinfo(
+  srs_def,
+  p,
+  V,
+  o,
+  as.CRS = FALSE,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{srs_def}{Character. A raster dataset name. It can be either file name.}

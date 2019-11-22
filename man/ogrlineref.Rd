@@ -4,9 +4,38 @@
 \alias{ogrlineref}
 \title{ogrlineref}
 \usage{
-ogrlineref(help_general, progress, quiet, f, dsco, lco, create, l, ln, lf,
-  p, pn, pm, pf, r, rn, o, on, of, s, get_pos, x, y, get_coord, m,
-  get_subline, mb, me, ignore.full_scan = TRUE, verbose = FALSE)
+ogrlineref(
+  help_general,
+  progress,
+  quiet,
+  f,
+  dsco,
+  lco,
+  create,
+  l,
+  ln,
+  lf,
+  p,
+  pn,
+  pm,
+  pf,
+  r,
+  rn,
+  o,
+  on,
+  of,
+  s,
+  get_pos,
+  x,
+  y,
+  get_coord,
+  m,
+  get_subline,
+  mb,
+  me,
+  ignore.full_scan = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{help_general}{Logical. Show the usage.}

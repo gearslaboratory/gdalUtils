@@ -4,10 +4,31 @@
 \alias{gdalbuildvrt}
 \title{gdalbuildvrt}
 \usage{
-gdalbuildvrt(gdalfile, output.vrt, tileindex, resolution, te, tr, tap,
-  separate, b, sd, allow_projection_difference, q, addalpha, hidenodata,
-  srcnodata, vrtnodata, a_srs, r, input_file_list, overwrite,
-  ignore.full_scan = TRUE, verbose = FALSE, ...)
+gdalbuildvrt(
+  gdalfile,
+  output.vrt,
+  tileindex,
+  resolution,
+  te,
+  tr,
+  tap,
+  separate,
+  b,
+  sd,
+  allow_projection_difference,
+  q,
+  addalpha,
+  hidenodata,
+  srcnodata,
+  vrtnodata,
+  a_srs,
+  r,
+  input_file_list,
+  overwrite,
+  ignore.full_scan = TRUE,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{gdalfile}{Character. Input files (as a character vector) or a wildcard search term (e.g. "*.tif")}

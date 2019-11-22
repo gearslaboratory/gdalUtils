@@ -4,8 +4,12 @@
 \alias{get_subdatasets}
 \title{get_subdatasets}
 \usage{
-get_subdatasets(datasetname, names_only = TRUE, normalizePath = FALSE,
-  verbose = FALSE)
+get_subdatasets(
+  datasetname,
+  names_only = TRUE,
+  normalizePath = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{datasetname}{Character. Input HDF4/5 or NetCDF file.}

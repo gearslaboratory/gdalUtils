@@ -4,10 +4,19 @@
 \alias{mosaic_rasters}
 \title{Mosaic raster files using GDAL Utilities}
 \usage{
-mosaic_rasters(gdalfile, dst_dataset, output.vrt = NULL,
-  output_Raster = FALSE, separate = FALSE, trim_margins = NULL,
-  gdalwarp_index = 1, gdalwarp_params = list(r = "near"),
-  force_ot = NULL, verbose = FALSE, ...)
+mosaic_rasters(
+  gdalfile,
+  dst_dataset,
+  output.vrt = NULL,
+  output_Raster = FALSE,
+  separate = FALSE,
+  trim_margins = NULL,
+  gdalwarp_index = 1,
+  gdalwarp_params = list(r = "near"),
+  force_ot = NULL,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{gdalfile}{Character. Input files (as a character vector) or a wildcard search term (e.g. "*.tif")}
