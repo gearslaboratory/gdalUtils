@@ -294,12 +294,22 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 								flag=paste("-",X," ",sep="")
 							}
 						}
-						# browser()
-						parameter_variables_repeatable_string <- paste(
-								paste(flag,
-										qm(parameter_values[[which(names(parameter_values)==X)]]),
-										sep=""),
-								collapse=" ")
+						
+						if(X %in% parameter_noquotes)
+						{
+							parameter_variables_repeatable_string <- paste(
+									paste(flag,
+											(parameter_values[[which(names(parameter_values)==X)]]),
+											sep=""),
+									collapse=" ")
+						} else
+						{	
+							parameter_variables_repeatable_string <- paste(
+									paste(flag,
+											qm(parameter_values[[which(names(parameter_values)==X)]]),
+											sep=""),
+									collapse=" ")
+						}
 						return(parameter_variables_repeatable_string)
 					},parameter_values=parameter_values,parameter_doubledash=parameter_doubledash)			
 		} else
