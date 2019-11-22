@@ -42,7 +42,7 @@ gdal_chooseInstallation <- function(hasDrivers)
 				function(x,hasDrivers)
 				{
 					installation_drivers <- x$drivers
-					if(!grepl("^2",x$version))
+					if(!grepl("^2|3",x$version))
 					{
 						return(length(intersect(hasDrivers,installation_drivers$format_code)) 
 										== length(hasDrivers))
