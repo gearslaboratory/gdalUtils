@@ -156,7 +156,7 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 	
 	parameter_noflags <- c("src_dataset","dst_dataset")
 	
-	parameter_noquotes <- unlist(parameter_variables$vector)
+	parameter_noquotes <- unlist(parameter_variables$vector,"gcp")
 	
 	parameter_doubledash <- c("config")
 	
