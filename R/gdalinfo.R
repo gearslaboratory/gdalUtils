@@ -3,6 +3,7 @@
 #' R wrapper for gdalinfo
 #' 
 #' @param datasetname Character. A raster dataset name. It can be either file name.
+#' @param json Logical. Display the output in json format.
 #' @param mm Logical. Force computation of the actual min/max values for each band in the dataset?
 #' @param stats Logical. Read and display image statistics. Force computation if no statistics are stored in an image.
 #' @param approx_stats Logical. Read and display image statistics. Force computation if no statistics are stored in an image. However, they may be computed based on overviews or a subset of all tiles. Useful if you are in a hurry and don't want precise stats.
@@ -64,7 +65,7 @@
 #' @importFrom utils glob2rx
 #' @export
 
-gdalinfo <- function(datasetname,mm,stats,
+gdalinfo <- function(datasetname,json,mm,stats,
 		approx_stats,hist,nogcp,nomd,nrat,noct,nofl,checksum,
 		proj4,oo,mdd,sd,
 		version,formats,format,optfile,config,debug,
@@ -82,7 +83,7 @@ gdalinfo <- function(datasetname,mm,stats,
 	# Start gdalinfo setup
 	parameter_variables <- list(
 			logical = list(
-					varnames <- c("mm","stats","approx_stats","hist","nogcp","nomd",
+					varnames <- c("json","mm","stats","approx_stats","hist","nogcp","nomd",
 							"nrat","noct","checksum","nofl","proj4",
 							"version","formats")),
 			vector = list(
@@ -97,7 +98,7 @@ gdalinfo <- function(datasetname,mm,stats,
 	)
 	
 	parameter_order <- c(
-			"mm","stats","approx_stats","hist","nogcp","nomd","nrat","noct","nofl","checksum",
+			"json","mm","stats","approx_stats","hist","nogcp","nomd","nrat","noct","nofl","checksum",
 			"proj4","mdd","sd",
 			"version","formats","format","optfile","config","debug","oo",
 			"datasetname")
