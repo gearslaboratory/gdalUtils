@@ -144,13 +144,13 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 			logical = list(
 					varnames <- c("strict","unscale","epo","eco","q","sds","stats","norat")),
 			vector = list(
-					varnames <- c("outsize","tr","scale","exponent","srcwin","projwin","a_ullr")),
+					varnames <- c("outsize","tr","exponent","srcwin","projwin","a_ullr")),
 			scalar = list(
 					varnames <- c("a_nodata")),
 			character = list(
 					varnames <- c("ot","of","mask","expand","r","projwin_srs","a_srs","oo","src_dataset","dst_dataset")),
 			repeatable = list(
-					varnames <- c("b","mo","co","config","gcp")))
+					varnames <- c("b","mo","co","config","gcp","scale")))
 	
 	parameter_order <- c(
 			"strict","exponent","unscale","epo","eco","q","sds","stats",
@@ -163,7 +163,7 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 	
 	parameter_noflags <- c("src_dataset","dst_dataset")
 	
-	parameter_noquotes <- c(unlist(parameter_variables$vector),"gcp")
+	parameter_noquotes <- c(unlist(parameter_variables$vector),"gcp","scale")
 	
 	parameter_doubledash <- c("config")
 	
