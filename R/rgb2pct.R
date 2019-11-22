@@ -51,7 +51,7 @@
 #' # Plot the contours using spplot:
 #' spplot(contour_output["Elevation"],contour=TRUE)
 #' }
-#' @import rgdal reticulate
+#' @import rgdal
 #' @export
 
 rgb2pct <- function(
