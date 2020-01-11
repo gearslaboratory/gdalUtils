@@ -130,7 +130,7 @@ gdallocationinfo <- function(
 	
 	if(!missing(coords))
 	{
-		if(is.matrix(coords))
+		if(is.matrix(coords)) # Fix required by Kurt Hornik
 		#		if(class(coords)=="matrix")
 		{
 			# We have to write these out to disk for now, unless
