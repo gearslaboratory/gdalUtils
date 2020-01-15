@@ -101,8 +101,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	executable <- normalizePath(list.files(
 					getOption("gdalUtils_gdalPath")[[gdal_installation_id]]$path,
 					executable,full.names=TRUE))
-	
-	if(!file.exists(executable))
+
+	if(!file.exists(executable) && !file.exists(paste0(executable,".exe")))
 	{
 		stop(paste0(executable," does not exist on your system.  Please check your installation."))
 	}

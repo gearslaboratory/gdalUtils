@@ -7,8 +7,8 @@ LazyLoad: yes
 Author: Jonathan Asher Greenberg and Matteo Mattiuzzi
 Description: Wrappers for the Geospatial Data Abstraction Library (GDAL)
     Utilities.
-Version: 2.0.2.7
-Date: 2020-01-12
+Version: 2.0.2.8
+Date: 2020-01-15
 Depends:
     R (>= 2.14.0)
 Imports:
