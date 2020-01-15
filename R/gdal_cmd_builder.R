@@ -79,7 +79,6 @@
 #' cmd
 #' system(cmd,intern=TRUE) 
 #' }
-#' @import reticulate
 #' @export
 
 #TODO: additional commands
@@ -373,12 +372,12 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 
 	cmd <- paste(c(qm(executable),parameter_vector),collapse=" ")
 	
-	if(python_util)
-	{
-		py_check <- py_available(initialize=T)
-		if(!py_check) stop("Python not available, please fix.")
-		cmd <- paste(py_config()$python,cmd)
-	}
+#	if(python_util)
+#	{
+#		py_check <- py_available(initialize=T)
+#		if(!py_check) stop("Python not available, please fix.")
+#		cmd <- paste(py_config()$python,cmd)
+#	}
 	
 	return(cmd)
 	
