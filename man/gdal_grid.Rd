@@ -296,12 +296,12 @@ if(require(raster) && valid_install)
 	tempfname_vrt <- paste(tempfname_base,".vrt",sep="")
 	vrt_header <- c(
 	'<OGRVRTDataSource>',
-	'\\t<OGRVRTLayer name="dem">',
-	'\\t<SrcDataSource>dem.csv</SrcDataSource>',
-	'\\t<GeometryType>wkbPoint</GeometryType>', 
- '\\t<GeometryField encoding="PointFromColumns" x="Easting" y="Northing" z="Elevation"/>',
-	'\\t</OGRVRTLayer>',
-	'\\t</OGRVRTDataSource>'			
+	'\t<OGRVRTLayer name="dem">',
+	'\t<SrcDataSource>dem.csv</SrcDataSource>',
+	'\t<GeometryType>wkbPoint</GeometryType>', 
+ '\t<GeometryField encoding="PointFromColumns" x="Easting" y="Northing" z="Elevation"/>',
+	'\t</OGRVRTLayer>',
+	'\t</OGRVRTDataSource>'			
 	)
 	vrt_filecon <- file(tempfname_vrt,"w")
 	writeLines(vrt_header,con=vrt_filecon)

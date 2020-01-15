@@ -79,6 +79,7 @@
 #' cmd
 #' system(cmd,intern=TRUE) 
 #' }
+#' @import reticulate
 #' @export
 
 #TODO: additional commands
@@ -100,6 +101,11 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	executable <- normalizePath(list.files(
 					getOption("gdalUtils_gdalPath")[[gdal_installation_id]]$path,
 					executable,full.names=TRUE))
+	
+	if(!file.exists(executable))
+	{
+		stop(paste0(executable," does not exist on your system.  Please check your installation."))
+	}
 	
 	parameter_variables_types <- names(parameter_variables)
 	defined_variables <- names(parameter_values)[sapply(parameter_values,function(X) class(X) != "name")]

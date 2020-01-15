@@ -55,7 +55,7 @@
 #' # and that raster and rgdal are also installed.
 #' # Note this isn't strictly neccessary, as executing the function will
 #' # force a search for a valid GDAL install.
-#' gdal_setInstallation()
+#' gdal_setInstallation(verbose=T)
 #' valid_install <- !is.null(getOption("gdalUtils_gdalPath"))
 #' if(valid_install)
 #' {
