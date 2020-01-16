@@ -13,7 +13,7 @@
 #' @param outsize Numeric. (c(xsize[percentage],ysize[percentage])). Set the size of the output file. Outsize is in pixels and lines unless '\%' is attached in which case it is as a fraction of the input image size.
 #' @param tr Numeric. c(xres,yres). (starting with GDAL 2.0) set target resolution. The values must be expressed in georeferenced units. Both must be positive values. This is exclusive with -outsize and -a_ullr.
 #' @param r Character. resampling_method. ("nearest"|"bilinear"|"cubic"|"cubicspline"|"lanczos"|"average"|"mode")  (GDAL >= 2.0) Select a resampling algorithm.
-#' @param scale Numeric. (c(src_min,src_max,dst_min,dst_max)). Rescale the input pixels values from the range src_min to src_max to the range dst_min to dst_max. If omitted the output range is 0 to 255. If omitted the input range is automatically computed from the source data.
+#' @param scale Numeric, Matrix or List. (c(src_min,src_max,dst_min,dst_max)). Rescale the input pixels values from the range src_min to src_max to the range dst_min to dst_max. If omitted the output range is 0 to 255. If omitted the input range is automatically computed from the source data.
 #' @param exponent Numeric. (From GDAL 1.11) To apply non-linear scaling with a power function. exp_val is the exponent of the power function (must be postive). This option must be used with the -scale option. If specified only once, -exponent applies to all bands of the output image. It can be repeated several times so as to specify per band parameters. It is also possible to use the "-exponent_bn" syntax where bn is a band number (e.g. "-exponent_2" for the 2nd band of the output dataset) to specify the parameters of one or several specific bands.
 #' @param unscale Logical. Apply the scale/offset metadata for the bands to convert scaled values to unscaled values. It is also often necessary to reset the output datatype with the -ot switch.
 #' @param srcwin Numeric. (c(xoff,yoff,xsize,ysize)).  Selects a subwindow from the source image for copying based on pixel/line location.
@@ -141,6 +141,21 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 			parameter_values$gcp <- paste(as.character(parameter_values$gcp),collapse=" ")
 		}
 	}
+	
+	if(!missing(scale))
+	{
+		if(is.numeric(scale))
+		{
+			parameter_values$scale <- list(paste(scale,collapse=" "))
+		}
+		
+		if(is.matrix(scale))
+		{
+			parameter_values$scale <- lapply(as.list(data.frame(t(scale))),function(X) paste(X,collapse=" "))
+		}
+		
+	}
+	
 	
 	parameter_variables <- list(
 			logical = list(
