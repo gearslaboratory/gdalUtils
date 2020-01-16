@@ -13,7 +13,8 @@ gdal_cmd_builder(
   parameter_doubledash = c(),
   parameter_noquotes = c(),
   gdal_installation_id = 1,
-  python_util = FALSE
+  python_util = FALSE,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ gdal_cmd_builder(
 \item{gdal_installation_id}{Numeric. The ID of the GDAL installation to use.  Defaults to 1.}
 
 \item{python_util}{Logical. Is the utility a python utility?  Default = FALSE.}
+
+\item{verbose}{Logical. Enable verbose execution? Default is FALSE.}
 }
 \value{
 Formatted GDAL command for use with system() calls.

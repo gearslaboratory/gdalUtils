@@ -52,6 +52,7 @@
 #' # and that raster and rgdal are also installed.
 #' # Note this isn't strictly neccessary, as executing the function will
 #' # force a search for a valid GDAL install.
+#' outdir <- tempdir()
 #' gdal_setInstallation()
 #' valid_install <- !is.null(getOption("gdalUtils_gdalPath"))
 #' if(require(raster) && require(rgdal) && valid_install)
@@ -67,21 +68,21 @@
 #' # Command-line gdaldem call:
 #' # gdaldem hillshade tahoe_lidar_highesthit.tif output_hillshade.tif
 #' output_hillshade <- gdaldem(mode="hillshade",input_dem=input_dem,
-#'	output="output_hillshade.tif",output_Raster=TRUE,verbose=TRUE)
+#'	output=file.path(outdir,"output_hillshade.tif"),output_Raster=TRUE,verbose=TRUE)
 #' plot(output_hillshade,col=gray.colors(256))
 #' 
 #' # Slope:
 #' # Command-line gdaldem call:
 #' # gdaldem slope tahoe_lidar_highesthit.tif output_slope.tif -p
 #' output_slope <- gdaldem(mode="slope",input_dem=input_dem,
-#'	output="output_slope.tif",p=TRUE,output_Raster=TRUE,verbose=TRUE)
+#'	output=file.path(outdir,"output_slope.tif"),p=TRUE,output_Raster=TRUE,verbose=TRUE)
 #' plot(output_slope,col=gray.colors(256))
 #' 
 #' # Aspect:
 #' # Command-line gdaldem call:
 #' # gdaldem aspect tahoe_lidar_highesthit.tif output_aspect.tif
 #' output_aspect <- gdaldem(mode="aspect",input_dem=input_dem,
-#'	output="output_aspect.tif",output_Raster=TRUE,verbose=TRUE)
+#'	output=file.path(outdir,"output_aspect.tif"),output_Raster=TRUE,verbose=TRUE)
 #' plot(output_aspect,col=gray.colors(256))
 #' }
 #' }

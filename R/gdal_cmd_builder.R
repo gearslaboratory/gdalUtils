@@ -11,6 +11,7 @@
 #' @param parameter_noquotes Character. Parameters which should not be wrapped in quotes (vector parameters only, at present).
 #' @param gdal_installation_id Numeric. The ID of the GDAL installation to use.  Defaults to 1.
 #' @param python_util Logical. Is the utility a python utility?  Default = FALSE.
+#' @param verbose Logical. Enable verbose execution? Default is FALSE.  
 #' @return Formatted GDAL command for use with system() calls. 
 #' @author Jonathan A. Greenberg (\email{gdalUtils@@estarcion.net})
 #' 
@@ -91,8 +92,10 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_doubledash=c(),
 		parameter_noquotes=c(),
 		gdal_installation_id=1,
-		python_util=FALSE)
+		python_util=FALSE,
+		verbose=FALSE)
 {
+	if(verbose) message("Checking installation...")
 	# path to executable check in here?
 	gdal_setInstallation()
 	if(is.null(getOption("gdalUtils_gdalPath"))) return()
@@ -107,7 +110,12 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	}
 	
 	parameter_variables_types <- names(parameter_variables)
-	defined_variables <- names(parameter_values)[sapply(parameter_values,function(X) class(X) != "name")]
+
+	# print(sapply(parameter_values,function(X) class(X)))
+	
+	defined_variables <- names(parameter_values)[sapply(parameter_values,function(X) class(X)[1] != "name")]
+	
+	if(verbose) message("Setting up logical variables...")
 	
 	if(any("logical" %in% parameter_variables_types))
 	{
@@ -158,6 +166,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		
 	}
 	
+	if(verbose) message("Setting up vector variables...")
+	
 	if(any("vector" %in% parameter_variables_types))
 	{
 		parameter_variables_vector <- parameter_variables$vector[[1]]
@@ -203,6 +213,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_variables_vector_strings <- NULL
 	}
 	
+	if(verbose) message("Setting up scalar variables...")
+	
 	if(any("scalar" %in% parameter_variables_types))
 	{
 		parameter_variables_scalar <- parameter_variables$scalar[[1]]
@@ -238,6 +250,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	{
 		parameter_variables_scalar_strings <- NULL
 	}
+	
+	if(verbose) message("Setting up character variables...")
 	
 	if(any("character" %in% parameter_variables_types))
 	{
@@ -275,6 +289,9 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	{
 		parameter_variables_character_strings <- NULL
 	}
+	
+	if(verbose) message("Setting up repeatable variables...")
+	
 	
 	if(any("repeatable" %in% parameter_variables_types))
 	{
@@ -327,6 +344,9 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_variables_repeatable_strings <- NULL
 	}
 	
+	if(verbose) message("Setting up noflag variables...")
+	
+	
 	if(!is.null(parameter_noflags))
 	{
 #		parameter_variables_noflag <- parameter_variables$noflag[[1]]
@@ -349,6 +369,8 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 	{
 		parameter_variables_noflag_strings <- NULL	
 	}
+	
+	if(verbose) message("Putting them all together...")
 	
 	
 	parameter_vector <- c(

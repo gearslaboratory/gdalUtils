@@ -118,15 +118,23 @@ gdallocationinfo <- function(
 	executable <- "gdallocationinfo"
 	# End gdalinfo setup
 	
+#	print(executable)	
+#	print(parameter_variables)
+#	print(parameter_values)
+#	print(parameter_order)
+#	print(parameter_noflags)
+#	print(parameter_noquotes)
+	
 	cmd <- gdal_cmd_builder(
 			executable=executable,
 			parameter_variables=parameter_variables,
 			parameter_values=parameter_values,
 			parameter_order=parameter_order,
 			parameter_noflags=parameter_noflags,
-			parameter_noquotes=parameter_noquotes)
+			parameter_noquotes=parameter_noquotes,
+			verbose=verbose)
 	
-	# browser()
+	if(verbose) message("Command built")
 	
 	if(!missing(coords))
 	{
@@ -154,6 +162,7 @@ gdallocationinfo <- function(
 	}
 	
 	if(verbose) message(paste("GDAL command being used:",cmd))
+	
 	
 	cmd_output <- system(cmd,intern=TRUE) 
 	
