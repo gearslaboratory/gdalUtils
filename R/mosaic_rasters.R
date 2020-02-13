@@ -76,7 +76,10 @@ mosaic_rasters <- function(gdalfile,dst_dataset,output.vrt=NULL,output_Raster=FA
 	# This is probably not worth doing in parallel:
 	gdalfile_proj4s <- foreach(k=gdalfile,.packages="gdalUtils",.combine="c") %do%
 			{
-				return(gdalsrsinfo(k,o="proj4"))	
+				# It looks like maybe GDAL 3 messed this up a bit, I think this is a clean fix:
+				gdalfile_proj4s <- gdalsrsinfo(k,o="proj4")
+				gdalfile_proj4s <- paste0(gdalfile_proj4s,collapse="")
+				return(gdalfile_proj4s)	
 			}
 	
 	# We need to clean up the text?
