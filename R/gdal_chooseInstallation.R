@@ -49,7 +49,7 @@ gdal_chooseInstallation <- function(hasDrivers)
 					} else
 					{
 						# FIX FOR VERSION 2.0						
-						matching_drivers <- grep(paste(hasDrivers,"-",sep=""),installation_drivers$format_code)
+						matching_drivers <- grep(paste0(hasDrivers,"-",collapse="|"),installation_drivers$format_code)
 						return(length(matching_drivers)==length(hasDrivers))
 					}				
 				},
