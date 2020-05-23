@@ -106,7 +106,7 @@ gdal_translate(
 
 \item{sd_index}{Numeric. If the file is an HDF4 or HDF5 file, which subdataset should be returned (1 to the number of subdatasets)?  If this flag is used, src_dataset should be the filename of the multipart file.  This parameter only works if the subdataset names follow the SUBDATASET_n_NAME convention.}
 
-\item{config}{Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
+\item{config}{Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
 
 \item{output_Raster}{Logical. Return output dst_dataset as a RasterBrick?}
 

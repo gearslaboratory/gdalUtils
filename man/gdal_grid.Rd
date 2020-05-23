@@ -78,7 +78,7 @@ gdal_grid(
 
 \item{q}{Logical. Suppress progress monitor and other non-error output.}
 
-\item{config}{Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
+\item{config}{Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
 
 \item{output_Raster}{Logical. Return output dst_filename as a RasterBrick?}
 

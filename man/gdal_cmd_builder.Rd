@@ -12,6 +12,7 @@ gdal_cmd_builder(
   parameter_noflags = c(),
   parameter_doubledash = c(),
   parameter_noquotes = c(),
+  parameter_named = c(),
   gdal_installation_id = 1,
   python_util = FALSE,
   verbose = FALSE
@@ -31,6 +32,8 @@ gdal_cmd_builder(
 \item{parameter_doubledash}{Character. Parameters which should have a double dash "--".}
 
 \item{parameter_noquotes}{Character. Parameters which should not be wrapped in quotes (vector parameters only, at present).}
+
+\item{parameter_named}{Named character. Paramters which have a double dash flag and are in key value format (e.g. '--config GDAL_CACHEMAX "30\%"')}
 
 \item{gdal_installation_id}{Numeric. The ID of the GDAL installation to use.  Defaults to 1.}
 
@@ -89,6 +92,10 @@ parameter_order <- c(
 			"ot","of","mask","expand","a_srs",
 			"b","mo","co",
 			"src_dataset","dst_dataset")
+			
+parameter_named <- c(
+     "config"
+)
 
 parameter_noflags <- c("src_dataset","dst_dataset")
 
@@ -97,7 +104,8 @@ parameter_values = list(
 	src_dataset = "input.tif",
 	dst_dataset = "output.envi",
 	of = "ENVI",
-	strict = TRUE
+	strict = TRUE, 
+	config = c(GDAL_CACHEMAX = "30\%")
 )
 
 cmd <- gdal_cmd_builder(
@@ -105,7 +113,8 @@ cmd <- gdal_cmd_builder(
 			parameter_variables=parameter_variables,
 			parameter_values=parameter_values,
 			parameter_order=parameter_order,
-			parameter_noflags=parameter_noflags)
+			parameter_noflags=parameter_noflags,
+			parameter_named = parameter_named)
 
 cmd
 system(cmd,intern=TRUE) 

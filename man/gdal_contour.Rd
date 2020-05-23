@@ -56,7 +56,7 @@ gdal_contour(
 
 \item{output_Vector}{Logical. Return output dst_filename as a Spatial* object.  Currently only works with f="ESRI Shapefile".}
 
-\item{config}{Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
+\item{config}{Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.}
 
 \item{ignore.full_scan}{Logical. If FALSE, perform a brute-force scan if other installs are not found.  Default is TRUE.}
 
