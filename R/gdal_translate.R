@@ -182,7 +182,9 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 	
 	parameter_noquotes <- c(unlist(parameter_variables$vector),"gcp","scale")
 	
-	parameter_doubledash <- c("config")
+	parameter_doubledash <- c()
+	
+	parameter_named <- c("config")
 	
 	executable <- "gdal_translate"
 #	browser()
@@ -194,6 +196,7 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 			parameter_noflags=parameter_noflags,
 			parameter_noquotes=parameter_noquotes,
 			parameter_doubledash=parameter_doubledash,
+			parameter_named = parameter_named,
 			gdal_installation_id=gdal_chooseInstallation(hasDrivers=of))
 	
 	if(verbose) message(paste("GDAL command being used:",cmd))

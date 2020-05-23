@@ -91,6 +91,7 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_values=c(),parameter_order=c(),parameter_noflags=c(),
 		parameter_doubledash=c(),
 		parameter_noquotes=c(),
+		parameter_named = c(),
 		gdal_installation_id=1,
 		python_util=FALSE,
 		verbose=FALSE)
@@ -300,7 +301,7 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		if(length(parameter_variables_repeatable_defined)>0)
 		{
 			parameter_variables_repeatable_strings <- sapply(parameter_variables_repeatable_defined,
-					function(X,parameter_values,parameter_doubledash)
+					function(X,parameter_values,parameter_doubledash, parameter_named)
 					{
 #						if(X == "gcp") browser()
 						
@@ -314,7 +315,16 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 								flag=paste("--",X," ",sep="")	
 							} else
 							{
-								flag=paste("-",X," ",sep="")
+							  if (X %in% parameter_named) {
+							    # this was introduced for options like 
+							    # '--config GDAL_CACHEMAX "30%"'. It is possible that there
+							    # are also single-dashed named options. Then this must be 
+							    # adapted.
+							    flag = paste0("--", X, " ")
+							  } else
+							  {
+							    flag=paste("-",X," ",sep="")
+							  }
 							}
 						}
 						
@@ -327,14 +337,23 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 									collapse=" ")			
 						} else
 						{	
-							parameter_variables_repeatable_string <- paste(
-									paste(flag,
-											qm(parameter_values[[which(names(parameter_values)==X)]]),
-											sep=""),
-									collapse=" ")
+						  if (X %in% parameter_named) 
+						  {
+						    parameter_variables_repeatable_string <- paste(
+						      paste(flag, 
+						            (names(parameter_values[[which(names(parameter_values)==X)]])),
+						            qm(parameter_values[[which(names(parameter_values)==X)]])), 
+						      collapse = " ")
+						  } else {
+						    parameter_variables_repeatable_string <- paste(
+						      paste(flag,
+						            qm(parameter_values[[which(names(parameter_values)==X)]]),
+						            sep=""),
+						      collapse=" ")
+						  }
 						}
 						return(parameter_variables_repeatable_string)
-					},parameter_values=parameter_values,parameter_doubledash=parameter_doubledash)			
+					},parameter_values=parameter_values,parameter_doubledash=parameter_doubledash, parameter_named=parameter_named)			
 		} else
 		{
 			parameter_variables_repeatable_strings <- NULL

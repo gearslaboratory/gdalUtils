@@ -92,9 +92,9 @@ gdalinfo <- function(datasetname,json,mm,stats,
 					varnames <- c("sd")),
 			character = list(
 					varnames <- c("mdd","datasetname",
-							"format","optfile","config","debug","oo")),
+							"format","optfile","debug","oo")),
 			repeatable = list(
-					varnames <- NULL)
+					varnames <- c("config"))
 	)
 	
 	parameter_order <- c(
@@ -105,7 +105,9 @@ gdalinfo <- function(datasetname,json,mm,stats,
 	
 	parameter_noflags <- c("datasetname")
 	
-	parameter_doubledash <- c("version","formats","format","optfile","config","debug")
+	parameter_doubledash <- c("version","formats","format","optfile","debug")
+	
+	parameter_named <- c("config")
 	
 	executable <- "gdalinfo"
 	# End gdalinfo setup
@@ -116,7 +118,8 @@ gdalinfo <- function(datasetname,json,mm,stats,
 			parameter_values=parameter_values,
 			parameter_order=parameter_order,
 			parameter_noflags=parameter_noflags,
-			parameter_doubledash=parameter_doubledash)
+			parameter_doubledash=parameter_doubledash,
+			parameter_named = parameter_named)
 	
 	if(verbose) message(paste("GDAL command being used:",cmd))
 	

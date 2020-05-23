@@ -119,7 +119,9 @@ gdal_contour <- function(
 	
 	parameter_noquotes <- unlist(parameter_variables$vector)
 	
-	parameter_doubledash <- c("config")
+	parameter_doubledash <- c()
+
+        parameter_named <- c("config")
 	
 	executable <- "gdal_contour"
 	
@@ -131,6 +133,7 @@ gdal_contour <- function(
 			parameter_noflags=parameter_noflags,
 			parameter_noquotes=parameter_noquotes,
 			parameter_doubledash=parameter_doubledash,
+                        parameter_named = parameter_named,
 			#		gdal_installation_id=gdal_chooseInstallation(hasDrivers=of))
 			gdal_installation_id=gdal_chooseInstallation())
 	
