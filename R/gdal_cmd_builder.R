@@ -8,6 +8,7 @@
 #' @param parameter_order Character. The order of the parameters for the GDAL command.
 #' @param parameter_noflags Character. Parameters which do not have a flag.
 #' @param parameter_doubledash Character. Parameters which should have a double dash "--".
+#' @param parameter_named Named character. Paramters which have a double dash flag and are in key value format (e.g. '--config GDAL_CACHEMAX "30%"')
 #' @param parameter_noquotes Character. Parameters which should not be wrapped in quotes (vector parameters only, at present).
 #' @param gdal_installation_id Numeric. The ID of the GDAL installation to use.  Defaults to 1.
 #' @param python_util Logical. Is the utility a python utility?  Default = FALSE.
