@@ -17,7 +17,7 @@
 #' @param fl Character. Name one or more "fixed levels" to extract.
 #' @param nln Character. Provide a name for the output vector layer. Defaults to "contour". 
 #' @param output_Vector Logical. Return output dst_filename as a Spatial* object.  Currently only works with f="ESRI Shapefile".
-#' @param config Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
+#' @param config Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
 #' @param ignore.full_scan Logical. If FALSE, perform a brute-force scan if other installs are not found.  Default is TRUE.
 #' @param verbose Logical. Enable verbose execution? Default is FALSE.  
 
@@ -119,7 +119,9 @@ gdal_contour <- function(
 	
 	parameter_noquotes <- unlist(parameter_variables$vector)
 	
-	parameter_doubledash <- c("config")
+	parameter_doubledash <- c()
+
+        parameter_named <- c("config")
 	
 	executable <- "gdal_contour"
 	
@@ -131,6 +133,7 @@ gdal_contour <- function(
 			parameter_noflags=parameter_noflags,
 			parameter_noquotes=parameter_noquotes,
 			parameter_doubledash=parameter_doubledash,
+                        parameter_named = parameter_named,
 			#		gdal_installation_id=gdal_chooseInstallation(hasDrivers=of))
 			gdal_installation_id=gdal_chooseInstallation())
 	

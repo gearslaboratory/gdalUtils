@@ -8,7 +8,8 @@
 #' @param parameter_order Character. The order of the parameters for the GDAL command.
 #' @param parameter_noflags Character. Parameters which do not have a flag.
 #' @param parameter_doubledash Character. Parameters which should have a double dash "--".
-#' @param parameter_noquotes Character. Parameters which should not be wrapped in quotes (vector parameters only, at present).
+#' @param parameter_named Named character. Parameters which have a double dash flag and are in key value format (e.g. '--config GDAL_CACHEMAX "30\%"')
+#' @param parameter_noquotes Character. Parameters which should not be wrapped in quotes (vector parameters only, at present). This option supersedes `parameter_named`.
 #' @param gdal_installation_id Numeric. The ID of the GDAL installation to use.  Defaults to 1.
 #' @param python_util Logical. Is the utility a python utility?  Default = FALSE.
 #' @param verbose Logical. Enable verbose execution? Default is FALSE.  
@@ -59,6 +60,10 @@
 #' 			"ot","of","mask","expand","a_srs",
 #' 			"b","mo","co",
 #' 			"src_dataset","dst_dataset")
+#' 			
+#' parameter_named <- c(
+#'      "config"
+#' )
 #' 
 #' parameter_noflags <- c("src_dataset","dst_dataset")
 #' 
@@ -67,7 +72,8 @@
 #' 	src_dataset = "input.tif",
 #' 	dst_dataset = "output.envi",
 #' 	of = "ENVI",
-#' 	strict = TRUE
+#' 	strict = TRUE, 
+#' 	config = c(GDAL_CACHEMAX = "30%")
 #' )
 #' 
 #' cmd <- gdal_cmd_builder(
@@ -75,7 +81,8 @@
 #' 			parameter_variables=parameter_variables,
 #' 			parameter_values=parameter_values,
 #' 			parameter_order=parameter_order,
-#' 			parameter_noflags=parameter_noflags)
+#' 			parameter_noflags=parameter_noflags,
+#' 			parameter_named = parameter_named)
 #' 
 #' cmd
 #' system(cmd,intern=TRUE) 
@@ -91,6 +98,7 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		parameter_values=c(),parameter_order=c(),parameter_noflags=c(),
 		parameter_doubledash=c(),
 		parameter_noquotes=c(),
+		parameter_named = c(),
 		gdal_installation_id=1,
 		python_util=FALSE,
 		verbose=FALSE)
@@ -300,7 +308,7 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 		if(length(parameter_variables_repeatable_defined)>0)
 		{
 			parameter_variables_repeatable_strings <- sapply(parameter_variables_repeatable_defined,
-					function(X,parameter_values,parameter_doubledash)
+					function(X,parameter_values,parameter_doubledash, parameter_named)
 					{
 #						if(X == "gcp") browser()
 						
@@ -314,7 +322,16 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 								flag=paste("--",X," ",sep="")	
 							} else
 							{
-								flag=paste("-",X," ",sep="")
+							  if (X %in% parameter_named) {
+							    # this was introduced for options like 
+							    # '--config GDAL_CACHEMAX "30%"'. It is possible that there
+							    # are also single-dashed named options. Then this must be 
+							    # adapted.
+							    flag = paste0("--", X, " ")
+							  } else
+							  {
+							    flag=paste("-",X," ",sep="")
+							  }
 							}
 						}
 						
@@ -327,14 +344,23 @@ gdal_cmd_builder <- function(executable,parameter_variables=c(),
 									collapse=" ")			
 						} else
 						{	
-							parameter_variables_repeatable_string <- paste(
-									paste(flag,
-											qm(parameter_values[[which(names(parameter_values)==X)]]),
-											sep=""),
-									collapse=" ")
+						  if (X %in% parameter_named) 
+						  {
+						    parameter_variables_repeatable_string <- paste(
+						      paste(flag, 
+						            (names(parameter_values[[which(names(parameter_values)==X)]])),
+						            qm(parameter_values[[which(names(parameter_values)==X)]])), 
+						      collapse = " ")
+						  } else {
+						    parameter_variables_repeatable_string <- paste(
+						      paste(flag,
+						            qm(parameter_values[[which(names(parameter_values)==X)]]),
+						            sep=""),
+						      collapse=" ")
+						  }
 						}
 						return(parameter_variables_repeatable_string)
-					},parameter_values=parameter_values,parameter_doubledash=parameter_doubledash)			
+					},parameter_values=parameter_values,parameter_doubledash=parameter_doubledash, parameter_named=parameter_named)			
 		} else
 		{
 			parameter_variables_repeatable_strings <- NULL

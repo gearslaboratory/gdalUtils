@@ -33,7 +33,7 @@
 #' @param norat Logical. (GDAL >= 1.11) Do not copy source RAT into destination dataset.
 #' @param oo Character. NAME=VALUE. (starting with GDAL 2.0) Dataset open option (format specific)
 #' @param sd_index Numeric. If the file is an HDF4 or HDF5 file, which subdataset should be returned (1 to the number of subdatasets)?  If this flag is used, src_dataset should be the filename of the multipart file.  This parameter only works if the subdataset names follow the SUBDATASET_n_NAME convention.
-#' @param config Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
+#' @param config Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
 #' @param output_Raster Logical. Return output dst_dataset as a RasterBrick?
 #' @param ignore.full_scan Logical. If FALSE, perform a brute-force scan if other installs are not found.  Default is TRUE.
 #' @param verbose Logical. Enable verbose execution? Default is FALSE.  
@@ -182,7 +182,9 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 	
 	parameter_noquotes <- c(unlist(parameter_variables$vector),"gcp","scale")
 	
-	parameter_doubledash <- c("config")
+	parameter_doubledash <- c()
+	
+	parameter_named <- c("config")
 	
 	executable <- "gdal_translate"
 #	browser()
@@ -194,6 +196,7 @@ gdal_translate <- function(src_dataset,dst_dataset,ot,strict,of="GTiff",
 			parameter_noflags=parameter_noflags,
 			parameter_noquotes=parameter_noquotes,
 			parameter_doubledash=parameter_doubledash,
+			parameter_named = parameter_named,
 			gdal_installation_id=gdal_chooseInstallation(hasDrivers=of))
 	
 	if(verbose) message(paste("GDAL command being used:",cmd))

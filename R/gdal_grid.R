@@ -24,7 +24,7 @@
 #' @param sql Character. "select_statement". An SQL statement to be evaluated against the datasource to produce a virtual layer of features to be processed.
 #' @param co Character. "NAME=VALUE". Passes a creation option to the output format driver. Multiple -co options may be listed. See format specific documentation for legal creation options for each format.
 #' @param q Logical. Suppress progress monitor and other non-error output.
-#' @param config Character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
+#' @param config Named character. Sets runtime configuration options for GDAL.  See https://trac.osgeo.org/gdal/wiki/ConfigOptions for more information.
 #' @param output_Raster Logical. Return output dst_filename as a RasterBrick?
 #' @param ignore.full_scan Logical. If FALSE, perform a brute-force scan if other installs are not found.  Default is TRUE.
 #' @param verbose Logical. Enable verbose execution? Default is FALSE.  
@@ -333,7 +333,9 @@ gdal_grid <- function(
 	
 	parameter_noquotes <- unlist(parameter_variables$vector)
 	
-	parameter_doubledash <- c("config")
+	parameter_doubledash <- c()
+
+        parameter_named <- c("config")
 	
 	executable <- "gdal_grid"
 	
@@ -345,6 +347,7 @@ gdal_grid <- function(
 			parameter_noflags=parameter_noflags,
 			parameter_noquotes=parameter_noquotes,
 			parameter_doubledash=parameter_doubledash,
+                        parameter_named = parameter_named,
 			#		gdal_installation_id=gdal_chooseInstallation(hasDrivers=of))
 			gdal_installation_id=gdal_chooseInstallation())
 	
